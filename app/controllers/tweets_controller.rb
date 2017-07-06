@@ -1,6 +1,7 @@
 class TweetsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_tweet, only: [:show, :edit, :update, :destroy]
+  before_action :set_tweet, only: [:show, :edit, :update, :destroy, :ownership]
+  before_action :check_owner, only: [:update, :edit, :destroy]
 
   def index
     @tweets = Tweet.all
@@ -38,6 +39,7 @@ class TweetsController < ApplicationController
       end #end if
     end  #end respond to
   end # create action
+
   def destroy
     @tweet.destroy
     respond_to do |format|
@@ -53,5 +55,13 @@ class TweetsController < ApplicationController
   def tweet_params
     params.require(:tweet).permit(:message, :user_id)
   end #end params method
+
+  def check_owner
+    unless current_user == @tweet.user
+        redirect_to tweets_url, notice: 'You can not edit this Tweet' and return
+    end
+  end
+
+
 
 end #end controller
