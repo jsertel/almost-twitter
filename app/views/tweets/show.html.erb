@@ -1,2 +1,10 @@
-<h1>Tweets#show</h1>
-<p>Find me in app/views/tweets/show.html.erb</p>
+<h1 id="notice"> <%= notice %></h1>
+<p>
+  <strong>Message:</strong> <%= @tweet.message %>
+</p>
+<p>
+  <strong>User:</strong> <%= @tweet.user.username %>
+</p>
+
+<%= link_to 'Edit', edit_tweet_path(@tweet), class: 'btn btn-default' %>
+<%= link_to 'All The Tweets Are Belong To You', tweets_path, class: 'btn btn-default' %>
