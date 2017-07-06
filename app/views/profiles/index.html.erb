@@ -1,0 +1,4 @@
+<h1>All Our Peoples</h1>
+<% @users.each do |user| %>
+  <%= link_to user.username, profile_path(user) %> <br>
+<% end %>
