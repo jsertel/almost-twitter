@@ -5,6 +5,7 @@ class TweetsController < ApplicationController
 
   def index
     @tweets = Tweet.all
+    @tweet = Tweet.new
   end
 
   def show
@@ -18,7 +19,7 @@ class TweetsController < ApplicationController
   def update
     respond_to do |format|
       if @tweet.update(tweet_params)
-        format.html {redirect_to @tweet, notice: 'Tweet was updated'}
+        format.html {redirect_to tweets_url, notice: 'Tweet was updated'}
       else
         format.html { render :edit}
       end
@@ -33,7 +34,7 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new(tweet_params)
     respond_to do |format|
       if @tweet.save
-        format.html {redirect_to @tweet, notice: 'You tweeter you'}
+        format.html {redirect_to tweets_url, notice: 'You tweeter you'}
       else
         format.html { render :new }
       end #end if
@@ -61,6 +62,7 @@ class TweetsController < ApplicationController
         redirect_to tweets_url, notice: 'You can not edit this Tweet' and return
     end
   end
+
 
 
 

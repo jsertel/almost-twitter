@@ -15,18 +15,17 @@
 </div>
 <% end %>
 
-<!-- actual form -->.
-<div class="field">
-  <%= f.label :message %> <br>
-  <%= f.text_field :message %>
-</div>
-<div class="field">
+<!-- actual form -->
+<div class="panel panel-default">
+  <div class="panel-body">
+    <%= f.label :message ,class: 'form-group'%> <br>
+    <%= f.text_field :message ,class: 'form-control' %>
     <%= f.hidden_field :user_id, value: current_user.id %>
+  </div>
+  <div class="panel-footer">
+    <%= f.submit class: 'btn btn-default'%>
+  </div>
 
-</div>
-
-<div class="actions">
-  <%= f.submit %>
 
 </div>
 
