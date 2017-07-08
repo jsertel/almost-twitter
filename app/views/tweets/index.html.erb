@@ -16,6 +16,7 @@
   <tbody>
     <% @tweets.each do |tweet| %>
     <tr>
+      <td class="round-image-50"> <%= image_tag(tweet.user.avatar.url(:thumb)) %></td>
       <td> <%= tweet.message %></td>
       <td> <%= tweet.user.username %></td>
       <td> <%= link_to 'Show', tweet %></td>
