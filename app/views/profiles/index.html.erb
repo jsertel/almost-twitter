@@ -1,4 +1,24 @@
 <h1>All Our Peoples</h1>
 <% @users.each do |user| %>
-  <%= link_to user.username, profile_path(user) %> <br>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <ul class="list-inline">
+      <li><%= image_tag(user.avatar.url(:thumb), class: 'round-image-50') %></li>
+      <li><strong><%= link_to user.username, profile_path(user) %></strong></li>
+
+    </ul>
+
+  </div>
+  <div class="panel-footer">
+    <ul class="list-inline">
+
+
+    </ul>
+  </div>
+</div>
+
+
+
+
+
 <% end %>
