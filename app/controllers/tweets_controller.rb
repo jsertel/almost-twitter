@@ -4,7 +4,7 @@ class TweetsController < ApplicationController
   before_action :check_owner, only: [:update, :edit, :destroy]
 
   def index
-    @tweets = Tweet.all.order(created_at: :desc)
+    @tweets = Tweet.order(created_at: :desc).paginate(:page => params[:page])
     @tweet = Tweet.new
   end
 
