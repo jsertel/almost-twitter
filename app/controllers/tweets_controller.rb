@@ -4,7 +4,7 @@ class TweetsController < ApplicationController
   before_action :check_owner, only: [:update, :edit, :destroy]
 
   def index
-    @tweets = Tweet.all
+    @tweets = Tweet.all.order(created_at: :desc)
     @tweet = Tweet.new
   end
 
